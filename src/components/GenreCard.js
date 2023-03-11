@@ -9,13 +9,13 @@ const setWidth = (w) => (width / 100) * w;
 
 const GenreCard = ({ genreName, active, onPress }) => {
   return (
-    <TouchableOpacity
+    <TouchableOpacity // c-a-d clickable and touchable  (like a button)
       style={{
         ...styles.container,
         backgroundColor: active ? COLORS.ACTIVE : COLORS.WHITE,
       }}
-      activeOpacity={0.5}
-      onPress={() => onPress(genreName)}
+      activeOpacity={0.5} // opacity when the user touch the button
+      onPress={() => onPress(genreName)} // onPress is a function that is called when the user touch the button
     >
       <Text
         style={{

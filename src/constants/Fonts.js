@@ -1,6 +1,6 @@
 export default {
     REGULAR: "Regular",
-    BOLD: "Bold",
+    BOLD: "bold",
     LIGHT: "Light",
     EXTRA_BOLD: "ExtraBold",
     EXTRA_LIGHT: "ExtraLight",
