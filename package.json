@@ -12,6 +12,7 @@
     "@expo/webpack-config": "^18.0.1",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/stack": "^6.3.16",
+    "axios": "^1.3.4",
     "babel-preset-expo": "^9.3.0",
     "expo": "~48.0.6",
     "expo-app-loading": "^2.1.1",
@@ -26,5 +27,8 @@
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
-  "private": true
+  "private": true ,
+  "projectConfig": {
+    "apiKey": "adf9798584447bfacccc936f65512c29"
+  }
 }

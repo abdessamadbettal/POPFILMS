@@ -12,18 +12,33 @@ import COLORS from "../constants/Colors";
 import IMAGES from "../constants/Images";
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from "@expo/vector-icons";
-const MovieCard = () => {
+import { getPoster } from "../services/MovieService";
+
+const MovieCard = ({
+        title,
+        poster,
+        language,
+        voteAverage,
+        voteCount,
+        
+    }) => {
     const [liked, setLiked] = useState(false);
     // const [voteCountValue, setVoteCountValue] = useState(voteCount);
     return (
         <TouchableOpacity activeOpacity={0.8} >
+            <ImageBackground
+        style={{ ...styles.container, width: 230 , height: 340  }}
+        imageStyle={{ borderRadius: 12 }}
+        source={{ uri: getPoster(poster) }}
+      >
+            
             <View style={styles.container}>
                 <View style={styles.imdbContainer}>
                     <Image source={IMAGES.IMDB} style={styles.imdbImage} resizeMode="cover" />
-                    <Text>9.5</Text>
+                    <Text>{voteAverage}</Text>
                 </View>
                 <TouchableNativeFeedback onPress={
-                    () => setLiked(!liked) 
+                    () => setLiked(!liked)
                 }>
                     <Ionicons
                         name={liked ? "heart" : "heart-outline"}
@@ -33,10 +48,11 @@ const MovieCard = () => {
                     />
                 </TouchableNativeFeedback>
             </View>
+            </ImageBackground>
             <View style={styles.movieTitle}>
                 <Text style={
                     styles.movieTitle
-                } numberOfLines={3} >the grand father</Text>
+                } numberOfLines={3} > {title}</Text>
                 <View style={
                     styles.movieSubTitleContainer
                 }>
@@ -46,7 +62,7 @@ const MovieCard = () => {
                     >
                         <AntDesign name="hearto" size={17}
                             style={styles.imdbRating} />
-                        <Text style={styles.movieSubTitle}>90%</Text>
+                        <Text style={styles.movieSubTitle}>{voteCount}</Text>
                     </View>
                 </View>
 
