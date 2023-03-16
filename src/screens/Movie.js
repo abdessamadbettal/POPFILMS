@@ -13,12 +13,10 @@ import {
   Share,
 } from "react-native";
 import COLORS from "../constants/Colors";
-// import FONTS from "../constants/Fonts";
 import {
   getMovieById,
   getPoster,
   getVideo,
-  // getLanguage,
 } from "../services/MovieService";
 import ItemSeparator from "../components/ItemSeparator";
 import CastCard from "../components/CastCard";
@@ -96,7 +94,6 @@ const Movie = ({ route, navigation }) => {
         {movie?.runtime} Min
       </Text>
       <Text style={styles.genreText}>
-        {/* {getLanguage(movie?.original_language)?.english_name} */}
       </Text>
       <View style={styles.overviewContainer}>
         <Text style={styles.overviewTitle}>Overview</Text>
@@ -238,7 +235,6 @@ const styles = StyleSheet.create({
   },
   headerText: {
     color: COLORS.WHITE,
-    // fontFamily: FONTS.BOLD,
   },
   playButton: {
     position: "absolute",
@@ -254,14 +250,12 @@ const styles = StyleSheet.create({
   },
   movieTitle: {
     color: COLORS.BLACK,
-    // fontFamily: FONTS.EXTRA_BOLD,
     fontSize: 18,
     width: setWidth(60),
   },
   ratingText: {
     marginLeft: 5,
     color: COLORS.BLACK,
-    // fontFamily: FONTS.EXTRA_BOLD,
     fontSize: 15,
   },
   row: {
@@ -272,7 +266,6 @@ const styles = StyleSheet.create({
     color: COLORS.LIGHT_GRAY,
     paddingHorizontal: 20,
     paddingTop: 5,
-    // fontFamily: FONTS.BOLD,
     fontSize: 13,
   },
   overviewContainer: {
@@ -282,21 +275,18 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   overviewTitle: {
-    color: COLORS.BLACK,
-    // fontFamily: FONTS.BOLD,
+    color: COLORS.WHITE,
     fontSize: 18,
   },
   overviewText: {
     color: COLORS.LIGHT_GRAY,
     paddingVertical: 5,
-    // fontFamily: FONTS.BOLD,
     fontSize: 13,
     textAlign: "justify",
   },
   castTitle: {
     marginLeft: 20,
     color: COLORS.BLACK,
-    // fontFamily: FONTS.BOLD,
     fontSize: 18,
   },
   castSubMenuContainer: {
@@ -307,13 +297,11 @@ const styles = StyleSheet.create({
   castSubMenuText: {
     marginRight: 10,
     color: COLORS.BLACK,
-    // fontFamily: FONTS.BOLD,
     fontSize: 13,
   },
   extraListTitle: {
     marginLeft: 20,
     color: COLORS.BLACK,
-    // fontFamily: FONTS.BOLD,
     fontSize: 18,
     marginVertical: 8,
   },

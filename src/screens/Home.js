@@ -10,17 +10,19 @@ import {
   getNowPlayingMovies,
   getUpcomingMovies,
   getAllGenres,
+  getPopularMovies
 } from "../services/MovieService";
-
-// const Genres = ["All", "Action", "Comedy", "Romance", "Horror", "sport"];
-// home screen
 const Home = ({ navigation }) => {
   const [activeGenre, setActiveGenre] = useState("All");
   const [nowPlayingMovies, setNowPlayingMovies] = useState({});
+  const [popularMovies, setPopularMovies] = useState({});
   const [upcomingMovies, setUpcomingMovies] = useState({});
   const [genres, setGenres] = useState([{ id: 10110, name: "All" }]);
 
   useEffect(() => {
+    getPopularMovies().then((movieResponse) =>
+      setPopularMovies(movieResponse.data)
+    );
     getNowPlayingMovies().then((movieResponse) =>
       setNowPlayingMovies(movieResponse.data)
     );
@@ -41,10 +43,10 @@ const Home = ({ navigation }) => {
       <View style={
         styles.headerContainer
       }>
-        <Text style={styles.headerTitle}>New movies</Text>
-        <Text style={styles.headerSubTitle}>view all</Text>
+        <Text style={styles.headerTitle}>popular movies</Text>
+        {/* <Text style={styles.headerSubTitle}>view all</Text> */}
       </View>
-      <View style={styles.genreListContainer}>
+      {/* <View style={styles.genreListContainer}>
         <FlatList
           data={genres.map((genre) => genre.name)}
           horizontal
@@ -58,6 +60,34 @@ const Home = ({ navigation }) => {
               onPress={setActiveGenre} />  // onPress is a function that is called when the user touch the button
           )}
         />
+      </View> */}
+      <View>
+        <FlatList
+          data={popularMovies.results}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id.toString()}
+          ItemSeparatorComponent={() => <ItemSeparator width={20} />}
+          ListHeaderComponent={() => <ItemSeparator width={20} />}
+          ListFooterComponent={() => <ItemSeparator width={20} />}
+          renderItem={({ item }) => (
+            <MovieCard
+              title={item.title}
+              language={item.original_language} // language is the original language of the movie
+              voteAverage={item.vote_average} // voteAverage is the average of the votes
+              voteCount={item.vote_count} // voteCount is the number of votes
+              poster={item.poster_path} // poster is the path of the poster image
+              heartLess={false} // heartLess is a boolean that indicates if the heart button is visible or not
+              onPress={() => navigation.navigate("movie", { movieId: item.id })} // onPress is a function that is called when the user touch the button 
+            />
+          )}
+        />
+      </View>
+      <View style={
+        styles.headerContainer
+      }>
+        <Text style={styles.headerTitle}>New movies</Text>
+        {/* <Text style={styles.headerSubTitle}>view all</Text> */}
       </View>
       <View>
         <FlatList
@@ -71,19 +101,19 @@ const Home = ({ navigation }) => {
           renderItem={({ item }) => (
             <MovieCard
               title={item.title}
-              language={item.original_language}
-              voteAverage={item.vote_average}
-              voteCount={item.vote_count}
-              poster={item.poster_path}
-              heartLess={false}
-              onPress={() => navigation.navigate("movie", { movieId: item.id })}
+              language={item.original_language} // language is the original language of the movie
+              voteAverage={item.vote_average} // voteAverage is the average of the votes
+              voteCount={item.vote_count} // voteCount is the number of votes
+              poster={item.poster_path} // poster is the path of the poster image
+              heartLess={false} // heartLess is a boolean that indicates if the heart button is visible or not
+              onPress={() => navigation.navigate("movie", { movieId: item.id })} // onPress is a function that is called when the user touch the button 
             />
           )}
         />
       </View>
       <View style={styles.headerContainer}>
         <Text style={styles.headerTitle}>Coming Soon</Text>
-        <Text style={styles.headerSubTitle}>VIEW ALL</Text>
+        {/* <Text style={styles.headerSubTitle}>VIEW ALL</Text> */}
       </View>
       <View>
         <FlatList
@@ -107,19 +137,6 @@ const Home = ({ navigation }) => {
           )}
         />
       </View>
-      {/* <View style={styles.genreListContainer}>
-        <FlatList
-          data={Genres}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item} // item is the genre name
-          ItemSeparatorComponent={() => <ItemSeparator width={20} />}
-          renderItem={({ item }) => (
-
-            <MovieCard /> // onPress is a function that is called when the user touch the button
-          )}
-        />
-      </View> */}
 
     </ScrollView>
   );
@@ -149,7 +166,6 @@ const styles = StyleSheet.create({
 
   },
   genreListContainer: {
-    // paddingVertical: 10,
     paddingHorizontal: 20,
   },
 

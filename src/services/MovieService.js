@@ -15,6 +15,9 @@ const TMDB_HTTP_REQUEST = axios.create({
   },
 });
 
+const getPopularMovies = () =>
+  TMDB_HTTP_REQUEST.get(ENDPOINTS.POPULAR_MOVIES);
+
 const getNowPlayingMovies = () =>
   TMDB_HTTP_REQUEST.get(ENDPOINTS.NOW_PLAYING_MOVIES);
 
@@ -39,9 +42,9 @@ const getVideo = (key) => `${YOUTUBE_BASE_URL}?v=${key}`;
 export {
   getNowPlayingMovies,
   getUpcomingMovies,
+  getPopularMovies,
   getAllGenres,
   getMovieById,
   getPoster,
-//   getLanguage,
   getVideo,
 };

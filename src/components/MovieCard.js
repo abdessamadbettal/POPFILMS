@@ -26,6 +26,12 @@ const MovieCard = ({
         onPress,
         
     }) => {
+        // console.log("poster", poster);
+        // console.log("title", title);
+        // console.log("voteAverage", voteAverage);
+        // console.log("voteCount", voteCount);
+        // console.log("onPress", onPress);
+
     const [liked, setLiked] = useState(false);
     // const [voteCountValue, setVoteCountValue] = useState(voteCount);
     return (
