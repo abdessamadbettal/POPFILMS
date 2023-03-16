@@ -7,6 +7,7 @@ import {
     Image,
     TouchableNativeFeedback,
     ImageBackground,
+
 } from "react-native";
 import COLORS from "../constants/Colors";
 import IMAGES from "../constants/Images";
@@ -17,15 +18,18 @@ import { getPoster } from "../services/MovieService";
 const MovieCard = ({
         title,
         poster,
-        language,
+        // language,
         voteAverage,
         voteCount,
+        // size,
+        // heartLess,
+        onPress,
         
     }) => {
     const [liked, setLiked] = useState(false);
     // const [voteCountValue, setVoteCountValue] = useState(voteCount);
     return (
-        <TouchableOpacity activeOpacity={0.8} >
+        <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
             <ImageBackground
         style={{ ...styles.container, width: 230 , height: 340  }}
         imageStyle={{ borderRadius: 12 }}

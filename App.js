@@ -27,10 +27,15 @@ const  App = () => {
             headerShown: false,
           }}
          />
-        <Stack.Screen name="movie" component={Movie} 
+         <Stack.Screen
+          name="movie"
+          component={Movie}
+          options={{ headerShown: false }}
+        />
+        {/* <Stack.Screen name="movie" component={Movie} 
         options={{
           headerShown: false,
-        }} />
+        }} /> */}
         {/* <Stack.Screen name="Details" component={Details} /> */}
       </Stack.Navigator>
     </NavigationContainer>

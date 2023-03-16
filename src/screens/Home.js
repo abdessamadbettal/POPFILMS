@@ -12,9 +12,9 @@ import {
   getAllGenres,
 } from "../services/MovieService";
 
-const Genres = ["All", "Action", "Comedy", "Romance", "Horror", "sport"];
+// const Genres = ["All", "Action", "Comedy", "Romance", "Horror", "sport"];
 // home screen
-const Home = () => {
+const Home = ({ navigation }) => {
   const [activeGenre, setActiveGenre] = useState("All");
   const [nowPlayingMovies, setNowPlayingMovies] = useState({});
   const [upcomingMovies, setUpcomingMovies] = useState({});
@@ -46,7 +46,7 @@ const Home = () => {
       </View>
       <View style={styles.genreListContainer}>
         <FlatList
-          data={Genres}
+          data={genres.map((genre) => genre.name)}
           horizontal
           showsHorizontalScrollIndicator={false}
           keyExtractor={(item) => item} // item is the genre name
